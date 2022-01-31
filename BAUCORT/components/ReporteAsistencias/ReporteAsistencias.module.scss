@@ -1,0 +1,44 @@
+.events {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.events .ant-badge-status {
+  width: 100%;
+  overflow: hidden;
+  font-size: 12px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.notesMonth {
+  font-size: 28px;
+  text-align: center;
+}
+.notesMonth section {
+  font-size: 28px;
+}
+
+.container {
+  display: inline-grid;
+  grid-template-rows: auto;
+  row-gap: 2rem;
+  justify-items: center;
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+.header {
+  display: flex;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  input {
+    max-width: 380px;
+  }
+}
+
+.calendar {
+  max-width: 90%;
+}

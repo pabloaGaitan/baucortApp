@@ -1,0 +1,21 @@
+FROM nginx
+RUN apt update
+RUN apt install nodejs npm -y
+
+WORKDIR /app
+
+ENV GENERATE_SOURCEMAP=false
+
+EXPOSE 3000
+
+COPY package.json .
+RUN npm install --force
+
+COPY . /app
+
+RUN npm run build
+#RUN cp -r build/* /usr/share/nginx/html
+
+#RUN cp /app/container/nginx.conf /etc/nginx/nginx.conf
+
+CMD npm run start

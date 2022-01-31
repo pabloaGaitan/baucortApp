@@ -1,0 +1,47 @@
+{
+  "name": "with-typescript",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next",
+    "build": "next build --no-lint",
+    "start": "next start",
+    "prettier": "prettier --list-different '**/*.{js,ts,tsx,jsx,scss}' && echo '✅ PASSED Prettier' || (echo '\nPlease fix code formatting by running:\nnpm run prettier:fix\n'; exit 1)",
+    "prettier:fix": "prettier --write '**/*.{js,ts,tsx,jsx,scss}'",
+    "prettier:view": "prettylint '**/*.{js,ts,tsx,jsx}'",
+    "type-check": "tsc --noEmit -skipLibCheck && echo '✅ PASSED Types'",
+    "type-check:watch": "npm run type-check -- --watch",
+    "lint": "eslint --ext .js,.ts,.tsx,.jsx . && echo '✅ PASSED ESLint' || (echo '\nPlease fix code formatting by running:\nnpm run lint:fix\n'; exit 1)",
+    "lint:fix": "eslint --ext .js,.ts,.tsx,.jsx . --fix",
+    "ci-check": "npm run prettier && npm run lint && npm run type-check && npm run test"
+  },
+  "dependencies": {
+    "antd": "^4.18.0",
+    "next": "latest",
+    "next-redux-wrapper": "^6.0.2",
+    "react": "^16.14.0",
+    "react-dom": "^16.12.0",
+    "react-redux": "^7.2.2",
+    "redux": "^4.0.5"
+  },
+  "devDependencies": {
+    "@reduxjs/toolkit": "^1.4.0",
+    "@types/lodash": "^4.14.178",
+    "@types/node": "^12.12.21",
+    "@types/react": "^16.9.16",
+    "@types/react-dom": "^16.9.4",
+    "@types/react-redux": "^7.1.21",
+    "@typescript-eslint/eslint-plugin": "^5.8.1",
+    "@typescript-eslint/parser": "^5.8.1",
+    "axios": "^0.24.0",
+    "eslint": "^8.5.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "lodash": "^4.17.21",
+    "prettier": "^2.5.1",
+    "sass": "^1.45.1",
+    "typescript": "4.0"
+  },
+  "license": "MIT"
+}

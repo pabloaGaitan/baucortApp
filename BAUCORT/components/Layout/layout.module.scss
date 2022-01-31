@@ -1,0 +1,20 @@
+.tabs {
+  color: white;
+
+  :global(.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn) {
+    color: cyan;
+  }
+
+  :global(.ant-tabs-ink-bar.ant-tabs-ink-bar-animated) {
+    background-color: cyan;
+  }
+
+  :global(.ant-tabs-tab):hover {
+    color: cyan;
+  }
+}
+
+.bodyLayout {
+  padding: 20px 50px;
+  background-color: white;
+}
