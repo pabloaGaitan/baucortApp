@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "deploy:back": "docker-compose up -d --force-recreate --remove-orphans baucort-back",
-    "deploy:front": "docker-compose up -d --force-recreate --remove-orphans baucort-front"
+    "deploy:back": "docker-compose up -d --build --remove-orphans baucort-back",
+    "deploy:front": "docker-compose up -d --build --remove-orphans baucort-front"
   },
   "repository": {
     "type": "git",
