@@ -1,0 +1,34 @@
+version: '2.3'
+services:
+  baucort-database:
+    image: postgres:12-alpine
+    ports:
+      - "5432:5432"
+    restart: always
+    environment: 
+      POSTGRES_DB: baucort
+      POSTGRES_PASSWORD: baucort
+      POSTGRES_USER: baucort
+  baucort-back:
+    build:
+      context: ./baucort-back
+      dockerfile: baucort-back
+    restart: always
+    ports: 
+      - "8080:8080"
+    depends_on:
+      - "baucort-database"
+  baucort-front:
+    build:
+      context: ./baucort-front-end
+      dockerfile: baucort-front
+    restart: always
+    ports: 
+      - "3000:3000"
+    depends_on:
+      - "baucort-back"
+networks: 
+  default: 
+    external: 
+      name: "baucort-network"
+
