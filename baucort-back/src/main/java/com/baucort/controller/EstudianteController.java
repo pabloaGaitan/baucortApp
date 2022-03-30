@@ -1,5 +1,8 @@
 package com.baucort.controller;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.baucort.controller.dto.EstudianteDto;
@@ -47,6 +51,13 @@ public class EstudianteController {
 	@PostMapping
 	public void descontarAlmuerzoDia(@RequestBody FechaDto fecha) {
 		estudianteService.descuentoAlmuerzoDia(fecha.getFecha());
+	}
+	
+	@GetMapping
+	public List<EstudianteDto> getAllEstudiantes(@RequestParam("order") String order){
+		return estudianteService.getAllEstudiantes(order).stream()
+				.map(estudianteMapper::estudianteToEstudianteDto)
+				.collect(Collectors.toList());
 	}
 
 }

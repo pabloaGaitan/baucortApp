@@ -75,6 +75,7 @@ const IndexPage: React.FC = () => {
         .then(res => {
           console.log(estudianteId)
           console.log(fecha)
+          alert("Inasistencia registrada")
         })
     }
   }

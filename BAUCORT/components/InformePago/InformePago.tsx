@@ -30,7 +30,29 @@ let codigoEstudiante = null;
 const IndexPage: React.FC = () => {
 
   const [informePago, setInformePago] = React.useState({"pagos":[],"saldo": 0});
-  
+  const [estudiantes, setEstudiantes] = React.useState([]);
+  let headersEst = [
+    {
+      title: 'Codigo',
+      dataIndex: 'codigo',
+      key: 'codigo'
+    },
+    {
+      title: 'Nombre',
+      dataIndex: 'nombresApellidos',
+      key: 'nombresApellidos'
+    },
+    {
+      title: 'Curso',
+      dataIndex: 'curso',
+      key: 'curso'
+    },
+    {
+      title: 'Grupo',
+      dataIndex: 'grupo',
+      key: 'grupo'
+    }
+  ]
   let headers = [
     {
       title: 'Fecha',
@@ -60,6 +82,10 @@ const IndexPage: React.FC = () => {
         .then(res =>{
           setInformePago(res.data)
         })
+        axios.get('http://104.196.249.226:8080/estudiante/' + codigoEstudiante)
+        .then(res =>{
+          setEstudiantes([res.data])
+    })
     }
   })
 
@@ -76,7 +102,7 @@ const IndexPage: React.FC = () => {
         <Input placeholder='Codigo del estudiante' style={{ width: 500 }} onChange = {changeCodigo}/>
         <Button onClick={onClick}>Buscar</Button>
       </section>
-    
+      <Table columns={headersEst} dataSource={estudiantes} />
       <Table columns={headers} dataSource={informePago.pagos} />
       <div className={styles.titleContainer}>
       <Input  style={{ width: 500 }} value={informePago.saldo} disabled />

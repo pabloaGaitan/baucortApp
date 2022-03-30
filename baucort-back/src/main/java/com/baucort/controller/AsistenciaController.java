@@ -33,7 +33,7 @@ public class AsistenciaController {
 	private ReporteService reporteService;
 	
 	@PostMapping()
-	public void crearAsistenciaEstudiante(@RequestParam("dia") int dia, @RequestParam("mes") int mes,
+	public List<String> crearAsistenciaEstudiante(@RequestParam("dia") int dia, @RequestParam("mes") int mes,
 			@RequestParam("anio") int anio, @RequestParam("file") MultipartFile file) throws IOException {
 		LocalDate fecha = LocalDate.of(anio, mes, dia);
 		ByteArrayInputStream stream = new   ByteArrayInputStream(file.getBytes());
@@ -43,7 +43,7 @@ public class AsistenciaController {
 		myString = myString.replace("]", "");
 		String[] codigos = myString.split("\r\n");
 		System.out.println(codigos);
-		asistenciaService.crearAsistencia(fecha, codigos);
+		return asistenciaService.crearAsistencia(fecha, codigos);
 	}
 	
 	@GetMapping("/estudiante/{codigo}/{mes}/{anio}")

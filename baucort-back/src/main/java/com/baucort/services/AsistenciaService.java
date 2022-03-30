@@ -1,6 +1,7 @@
 package com.baucort.services;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,8 @@ public class AsistenciaService {
 	@Autowired
 	private EstudianteRepository estudianteRepository;
 	
-	public void crearAsistencia(LocalDate fecha, String[] codigos) {
+	public List<String> crearAsistencia(LocalDate fecha, String[] codigos) {
+		List<String> estudiantesNoEncontrados = new ArrayList<>();
 		for (String codigoEstudiante : codigos) {
 			Estudiante estudiante = estudianteRepository.findByCodigo(codigoEstudiante);
 			if (estudiante != null) {
@@ -29,8 +31,12 @@ public class AsistenciaService {
 				asistencia = asistenciaRepository.save(asistencia);
 				estudiante.addAsistencia(asistencia);
 				estudianteRepository.save(estudiante);
+			}else {
+				estudiantesNoEncontrados.add(codigoEstudiante);
 			}
 		}
+		
+		return estudiantesNoEncontrados;
 		
 	}
 	

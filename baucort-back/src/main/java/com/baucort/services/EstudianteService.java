@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.baucort.entities.Estudiante;
@@ -51,6 +53,17 @@ public class EstudianteService {
 		Long valorAlmuerzo = (long) (estudiante.getCurso().getValorAlmuerzo() * (1 - descuento));
 		estudiante.setSaldoAlmuerzo(estudiante.getSaldoAlmuerzo() - valorAlmuerzo);
 		estudianteRepository.save(estudiante);
+	}
+	
+	public List<Estudiante> getAllEstudiantes(String order){
+		Sort s = null;
+		if (order.equals("ASC")) {
+			s = Sort.by(Direction.ASC, "saldoAlmuerzo");
+		} else {
+			s = Sort.by(Direction.DESC, "saldoAlmuerzo");
+		}
+		return estudianteRepository.findAll(s);
+		
 	}
 
 }

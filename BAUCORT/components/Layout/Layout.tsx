@@ -65,6 +65,7 @@ const AppLayout: React.FC<Props> = ({ children }) => {
               <TabPane tab="Informe de pagos" key="/InformePago" />
               <TabPane tab="Registrar asistencia" key="/RegistrarAsistencias" />
               <TabPane tab="Registrar pago" key="/RegistrarPago" />
+              <TabPane tab="Listado de estudiantes" key="/ListaEstudiantes" />
             </>
           ) : (
             <TabPane tab="Login" key="/Login" />

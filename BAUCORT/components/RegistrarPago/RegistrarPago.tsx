@@ -89,6 +89,7 @@ const IndexPage: React.FC = () => {
         .then(res => {
           console.log(estudianteId)
           console.log(fecha)
+          alert("Pago registrado")
         })
     } else {
       alert("Por favor llenar todos los campos.")
