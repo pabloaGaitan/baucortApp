@@ -20,7 +20,7 @@ services:
       - "baucort-database"
   baucort-front:
     build:
-      context: ./baucort-front-end
+      context: ./BAUCORT
       dockerfile: baucort-front
     restart: always
     ports: 

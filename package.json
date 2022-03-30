@@ -1,0 +1,21 @@
+{
+  "name": "baucortapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "deploy:back": "docker-compose up -d --build --remove-orphans baucort-back",
+    "deploy:front": "docker-compose up -d --build --remove-orphans baucort-front",
+    "db:backup": "docker exec -t baucortapp_baucort-database_1 pg_dump baucort -Ubaucort > latest.sql"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pabloaGaitan/baucortApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pabloaGaitan/baucortApp/issues"
+  },
+  "homepage": "https://github.com/pabloaGaitan/baucortApp#readme"
+}
